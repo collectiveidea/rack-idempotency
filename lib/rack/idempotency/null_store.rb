@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rack
   class Idempotency
     # Basic version of the store.  This class doesn't read or write.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rack
   class Idempotency
     class RequestStorage
@@ -25,7 +27,7 @@ module Rack
       attr_reader :store
 
       def storage_key
-        "rack:idempotency:" + request.idempotency_key
+        'rack:idempotency:' + request.idempotency_key
       end
     end
   end

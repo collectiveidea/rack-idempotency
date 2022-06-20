@@ -1,13 +1,15 @@
-require "json"
+# frozen_string_literal: true
 
-require "rack/idempotency/version"
+require 'json'
 
-require "rack/idempotency/errors"
-require "rack/idempotency/memory_store"
-require "rack/idempotency/null_store"
-require "rack/idempotency/request"
-require "rack/idempotency/request_storage"
-require "rack/idempotency/response"
+require 'rack/idempotency/version'
+
+require 'rack/idempotency/errors'
+require 'rack/idempotency/memory_store'
+require 'rack/idempotency/null_store'
+require 'rack/idempotency/request'
+require 'rack/idempotency/request_storage'
+require 'rack/idempotency/response'
 
 module Rack
   # Rack middleware for ensuring mutating endpoints are called at most once.

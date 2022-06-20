@@ -1,4 +1,6 @@
-require "rack/utils"
+# frozen_string_literal: true
+
+require 'rack/utils'
 
 module Rack
   class Idempotency
@@ -12,11 +14,11 @@ module Rack
       end
 
       def success?
-        status.to_i >= 200 && status.to_i < 400
+        status.between?(200, 400)
       end
 
       def to_a
-        [status, headers.to_hash, body.each(&:to_s)]
+        [status, headers.to_hash, body.map(&:to_s)]
       end
 
       def to_json

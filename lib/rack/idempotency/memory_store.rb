@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rack
   class Idempotency
     # Stores idempotency information in a Hash.
