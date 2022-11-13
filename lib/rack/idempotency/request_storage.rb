@@ -34,7 +34,7 @@ module Rack
       end
 
       def digest
-        digestable = "#{request.idempotency_key}:#{request.url}:#{request.body.read}"
+        digestable = "#{request.idempotency_key}:#{request.url}:#{request.params}"
         OpenSSL::HMAC.hexdigest('SHA256', 'idempotency', digestable)
       end
     end
