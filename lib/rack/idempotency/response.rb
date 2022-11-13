@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rack/utils'
+require 'rack/headers'
 
 module Rack
   class Idempotency
@@ -9,7 +9,7 @@ module Rack
 
       def initialize(status, headers, body)
         @status  = status.to_i
-        @headers = Rack::Utils::HeaderHash.new(headers)
+        @headers = Rack::Headers.new(headers)
         @body    = body
       end
 

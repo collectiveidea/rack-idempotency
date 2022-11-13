@@ -10,7 +10,5 @@ module Rack
         @env = env
       end
     end
-    
-    class InsecureKeyError < Error; end
   end
 end

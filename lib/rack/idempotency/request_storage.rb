@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'digest'
+require 'openssl/hmac'
 
 module Rack
   class Idempotency
@@ -30,12 +30,12 @@ module Rack
       attr_reader :request, :store
 
       def key
-        "idempotency:#{digest}"
+        @key ||= "idempotency:#{digest}"
       end
 
       def digest
-        digestable = "#{request.idempotency_key}:#{request.body.read}"
-        Digest::SHA256.hexdigest(digestable)
+        digestable = "#{request.idempotency_key}:#{request.url}:#{request.body.read}"
+        OpenSSL::HMAC.hexdigest('SHA256', 'idempotency', digestable)
       end
     end
   end

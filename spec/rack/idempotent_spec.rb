@@ -20,14 +20,6 @@ RSpec.describe Rack::Idempotency do
       end
     end
 
-    context 'with insecure idempotency key' do
-      subject { request.post('/', 'HTTP_IDEMPOTENCY_KEY' => 'x') }
-
-      it 'raises a Rack::Idempotency::InsecureKeyError' do
-        expect { subject }.to raise_error(Rack::Idempotency::InsecureKeyError)
-      end
-    end
-
     context 'with an idempotency key' do
       subject { request.post('/', 'HTTP_IDEMPOTENCY_KEY' => key).body }
 
@@ -97,14 +89,6 @@ RSpec.describe Rack::Idempotency do
 
       it 'proceeds with original request' do
         expect(subject).not_to be_nil
-      end
-    end
-
-    context 'with insecure idempotency key' do
-      subject { request.post('/', 'HTTP_IDEMPOTENCY_KEY' => 'x') }
-
-      it 'raises a Rack::Idempotency::InsecureKeyError' do
-        expect { subject }.to raise_error(Rack::Idempotency::InsecureKeyError)
       end
     end
 
