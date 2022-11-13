@@ -10,5 +10,7 @@ module Rack
         @env = env
       end
     end
+
+    class IdempotencyKeyTooLong < Error; end
   end
 end
