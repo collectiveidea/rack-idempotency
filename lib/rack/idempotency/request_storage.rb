@@ -14,13 +14,13 @@ module Rack
         return if request.idempotency_key.nil?
 
         stored = store.read(key)
-        JSON.parse(stored) if stored
+        store.deserialize(stored) if stored
       end
 
       def write(response)
         return if request.idempotency_key.nil?
 
-        store.write(key, response.to_json)
+        store.write(key, store.serialize(response))
       end
 
       private

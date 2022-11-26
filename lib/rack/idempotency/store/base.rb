@@ -12,6 +12,14 @@ module Rack
         def write(_key, _value)
           raise NotImplementedError
         end
+
+        def serialize(value)
+          value.to_json
+        end
+
+        def deserialize(value)
+          JSON.parse(value)
+        end
       end
     end
   end
